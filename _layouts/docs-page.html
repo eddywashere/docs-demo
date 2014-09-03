@@ -2,6 +2,8 @@
 layout: default
 ---
 
+{% assign docs = site.docs | where: 'category', 'Getting Started' | sort: 'weight' %}
+
 <div class="jumbotron text-center">
   <div class="container">
     <h1>{% if page.category %}{{ page.category }}{% else %}{{ page.title }}{% endif %}</h1>

@@ -1,6 +1,11 @@
 $(function() {
     // TOC Stuff
-    $("#markdown-toc").appendTo(".sidebar #active-menu");
+    $(".col-sm-9 > #markdown-toc").addClass('nav').appendTo(".sidebar #active-menu");
+
+    $('.section > h1').each(function(i, e){
+      var menu = $(".bs-docs-sidenav a[href='#" + e.id + "']").parent();
+      $(e).next().find('#markdown-toc').addClass('nav').appendTo(menu);
+    });
 
     // Sidenav affixing
         setTimeout(function () {
@@ -19,6 +24,8 @@ $(function() {
                 return (this.bottom = $('.bs-docs-footer').outerHeight(true))
               }
             }
-          })
+          });
+
+          $('body').scrollspy({ target: '.bs-docs-sidebar' })
         }, 100)
 });
